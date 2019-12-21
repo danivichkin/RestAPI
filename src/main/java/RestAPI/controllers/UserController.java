@@ -1,17 +1,17 @@
-package controllers;
+package RestAPI.controllers;
 
 
-import models.User;
+import RestAPI.models.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import services.UserServices;
+import RestAPI.services.UserServices;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserServices userServices;
@@ -25,7 +25,7 @@ public class UserController {
         return userServices.getAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, path = "/getUserById")
     public User getUserById(@RequestParam long id){
         return userServices.findById(id);
     }
@@ -34,18 +34,20 @@ public class UserController {
     public User getUserByFirstName(@RequestParam String name){
        return userServices.findByFirstName(name);
     }
+
     @RequestMapping(method = RequestMethod.DELETE, path = "/delUser")
     public void delUser(User user){
         userServices.delete(user);
     }
+
     @RequestMapping(method = RequestMethod.DELETE)
     public void delUserById(@RequestParam long id){
         userServices.delById(id);
     }
+
     @RequestMapping(method = RequestMethod.POST, path = "/addUser")
     public User addUser(){
         return userServices.save(new User());
     }
 
-    //TODO PUT zapros
 }

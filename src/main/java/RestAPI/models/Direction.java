@@ -1,16 +1,20 @@
-package models;
+package RestAPI.models;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "direction")
+@Table(name = "directions")
 public class Direction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "direction_id")
     private long id;
+
+    @Column(name = "Title")
     private String title;
+
+    @Column(name = "Description")
     private String description;
 
     public Direction() {

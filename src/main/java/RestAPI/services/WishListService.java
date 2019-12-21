@@ -1,10 +1,10 @@
-package services;
+package RestAPI.services;
 
 
-import models.User;
-import models.WishList;
+import RestAPI.models.User;
+import RestAPI.models.WishList;
+import RestAPI.repos.WishListRepository;
 import org.springframework.stereotype.Service;
-import repos.WishListRepository;
 
 import java.util.List;
 

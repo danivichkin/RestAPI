@@ -1,8 +1,6 @@
-package models;
+package RestAPI.models;
 
 import javax.persistence.*;
-import java.util.Date;
-
 
 @Entity
 @Table(name = "users")
@@ -10,12 +8,24 @@ import java.util.Date;
 public class User {
 
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+
+    @Column(name = "firstName")
     private String firstName;
+
+    @Column(name = "surName")
     private String secondName;
-    @Temporal(TemporalType.DATE)
-    private Date birthday;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "password")
+    private String password;
+
+
+    @OneToOne
     private WishList wishList;
 
     public User() { }
@@ -25,7 +35,21 @@ public class User {
         this.wishList = wishList;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public long getId() {
         return id;
@@ -49,14 +73,6 @@ public class User {
 
     public void setSecondName(String secondName) {
         this.secondName = secondName;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 
     public WishList getWishList() {

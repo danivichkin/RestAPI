@@ -1,6 +1,6 @@
-package repos;
+package RestAPI.repos;
 
-import models.Direction;
+import RestAPI.models.Direction;
 import org.springframework.data.repository.CrudRepository;
 
 public interface DirectionsRepository extends CrudRepository<Direction, Long> {

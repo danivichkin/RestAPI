@@ -1,9 +1,9 @@
-package services;
+package RestAPI.services;
 
 
-import models.User;
+import RestAPI.models.User;
+import RestAPI.repos.UserRepository;
 import org.springframework.stereotype.Service;
-import repos.UserRepository;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -39,6 +39,6 @@ public class UserServices {
     }
 
     public void delById(long id) {
-        userRepository.delUserById(id);
+        userRepository.deleteUserById(id);
     }
 }

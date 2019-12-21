@@ -1,12 +1,12 @@
-package controllers;
+package RestAPI.controllers;
 
 
-import models.Direction;
+import RestAPI.models.Direction;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import services.DirectionService;
+import RestAPI.services.DirectionService;
 import java.util.List;
 
 @RestController
@@ -24,7 +24,7 @@ public class DirectionController {
         return directionService.getAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, path = "/getDirectionById")
     public Direction getById(@RequestParam Long id) {
         return directionService.getById(id);
     }
@@ -40,7 +40,4 @@ public class DirectionController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/addDirection")
     public Direction addDirection() { return directionService.saveDirection(new Direction());}
-
-    //TODO PUT Zapros
-
 }

@@ -1,8 +1,8 @@
-package services;
+package RestAPI.services;
 
 
-import models.Direction;
-import repos.DirectionsRepository;
+import RestAPI.models.Direction;
+import RestAPI.repos.DirectionsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;

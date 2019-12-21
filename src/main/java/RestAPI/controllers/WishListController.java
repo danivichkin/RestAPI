@@ -1,8 +1,8 @@
-package controllers;
+package RestAPI.controllers;
 
 
-import models.WishList;
-import services.WishListService;
+import RestAPI.models.WishList;
+import RestAPI.services.WishListService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

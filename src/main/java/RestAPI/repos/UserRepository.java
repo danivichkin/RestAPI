@@ -1,10 +1,10 @@
-package repos;
+package RestAPI.repos;
 
 
-import models.User;
+import RestAPI.models.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
     User getUserByFirstName(String name);
-    void delUserById(long id);
+    void deleteUserById(long id);
 }
