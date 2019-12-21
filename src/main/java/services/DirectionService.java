@@ -2,7 +2,7 @@ package services;
 
 
 import models.Direction;
-import repos.DirectionsRepo;
+import repos.DirectionsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -11,9 +11,9 @@ import java.util.List;
 @Service
 public class DirectionService {
 
-    private final DirectionsRepo directionsRepo;
+    private final DirectionsRepository directionsRepo;
 
-    public DirectionService(DirectionsRepo directionsRepo) {
+    public DirectionService(DirectionsRepository directionsRepo) {
         this.directionsRepo = directionsRepo;
     }
 

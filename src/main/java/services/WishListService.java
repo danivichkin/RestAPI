@@ -16,6 +16,7 @@ public class WishListService{
         this.wishListRepository = wishListRepository;
     }
 
+
     public List getAll() {
         return (List) wishListRepository.findAll();
     }
