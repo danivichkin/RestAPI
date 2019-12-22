@@ -2,10 +2,7 @@ package RestAPI.controllers;
 
 
 import RestAPI.models.Direction;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import RestAPI.services.DirectionService;
 import java.util.List;
 
@@ -19,25 +16,23 @@ public class DirectionController {
         this.directionService = directionService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/getDirection")
+    @RequestMapping(method = RequestMethod.GET)
     public List<Direction> getAllDir() {
         return directionService.getAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/getDirectionById")
-    public Direction getById(@RequestParam Long id) {
-        return directionService.getById(id);
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Direction getById(@RequestParam Long id) { return directionService.getById(id); }
+
+    @RequestMapping(value = "/{id}" , method = RequestMethod.DELETE)
+    public void delDirectionById(@RequestBody int id) { directionService.delDirectionById(id); }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public void editDirection(@RequestBody Direction direction){ directionService.saveDirection(direction); }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public Direction addDirection(@RequestParam String title, @RequestParam String description) {
+        Direction direction = new Direction(title, description);
+        return directionService.saveDirection(direction);
     }
-
-    @RequestMapping(method = RequestMethod.GET)
-    public Direction getByTitle(@RequestParam String title){ return directionService.getByTitle(title); }
-
-    @RequestMapping(method = RequestMethod.DELETE, path = "/delDirection")
-    public void delDirection(){ directionService.delAllDirections();}
-
-    @RequestMapping(method = RequestMethod.DELETE)
-    public void delDirectionById(@RequestParam long id) { directionService.delDirectionById(id); }
-
-    @RequestMapping(method = RequestMethod.POST, path = "/addDirection")
-    public Direction addDirection() { return directionService.saveDirection(new Direction());}
 }

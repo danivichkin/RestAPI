@@ -1,7 +1,5 @@
 package RestAPI.services;
 
-
-import RestAPI.models.User;
 import RestAPI.models.WishList;
 import RestAPI.repos.WishListRepository;
 import org.springframework.stereotype.Service;
@@ -16,7 +14,6 @@ public class WishListService{
         this.wishListRepository = wishListRepository;
     }
 
-
     public List getAll() {
         return (List) wishListRepository.findAll();
     }
@@ -29,9 +26,8 @@ public class WishListService{
         wishListRepository.delete(unit);
     }
 
-    public User save(WishList unit) {
+    public void save(WishList unit) {
         wishListRepository.save(unit);
-        return null;
     }
 
 }

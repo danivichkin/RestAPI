@@ -2,10 +2,8 @@ package RestAPI.controllers;
 
 
 import RestAPI.models.User;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import RestAPI.models.WishList;
+import org.springframework.web.bind.annotation.*;
 import RestAPI.services.UserServices;
 
 import java.util.List;
@@ -20,34 +18,21 @@ public class UserController {
         this.userServices = userServices;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/getUser")
+    @RequestMapping(method = RequestMethod.GET)
     public List getAllUsers(){
         return userServices.getAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/getUserById")
-    public User getUserById(@RequestParam long id){
-        return userServices.findById(id);
-    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public User getItemById(@PathVariable int id) { return userServices.findById(id); }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public User getUserByFirstName(@RequestParam String name){
-       return userServices.findByFirstName(name);
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE, path = "/delUser")
-    public void delUser(User user){
-        userServices.delete(user);
+    @RequestMapping(method = RequestMethod.POST)
+    public User addUser(@RequestBody String firstname, @RequestBody WishList wishList){
+        User user = new User(firstname, wishList);
+        return userServices.save(user);
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public void delUserById(@RequestParam long id){
-        userServices.delById(id);
-    }
-
-    @RequestMapping(method = RequestMethod.POST, path = "/addUser")
-    public User addUser(){
-        return userServices.save(new User());
-    }
+    public void deleteUser(@PathVariable int id){ userServices.delById(id); }
 
 }
