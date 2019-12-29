@@ -1,10 +1,15 @@
 package RestAPI.models;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-
+@ToString(of = {"id", "firstname"})
+@EqualsAndHashCode(of = {"id"})
 public class User {
 
     @Id

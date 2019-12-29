@@ -29,10 +29,7 @@ public class UserServices {
         userRepository.delete(unit);
     }
 
-    public User save(User unit) {
-       return userRepository.save(unit);
-
-    }
+    public User save(User unit) { return userRepository.save(unit); }
 
     public User findByFirstName(String name) {
        return userRepository.getUserByFirstName(name);
