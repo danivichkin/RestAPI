@@ -18,21 +18,22 @@ public class UserController {
         this.userServices = userServices;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List getAllUsers(){
         return userServices.getAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("{id}")
     public User getItemById(@PathVariable int id) { return userServices.findById(id); }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public User addUser(@RequestBody String firstname, @RequestBody WishList wishList){
+    @PostMapping
+    public User addUser(@RequestBody String firstname,
+                        @RequestBody WishList wishList){
         User user = new User(firstname, wishList);
         return userServices.save(user);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
+    @DeleteMapping
     public void deleteUser(@PathVariable int id){ userServices.delById(id); }
 
 }

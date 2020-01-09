@@ -22,13 +22,13 @@ public class WishListController {
         return wishListService.getAll();
     }
 
-    @RequestMapping(value = "/{id}" ,method = RequestMethod.PUT)
+   @PutMapping("{id}")
     public void editWishList(@RequestParam WishList wishList){
         wishListService.save(wishList);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delWishListsById(@RequestParam int id){
+    @DeleteMapping("{id}")
+    public void deleteWishListsById(@RequestParam int id){
         WishList  wishList = wishListService.findById(id);
         wishListService.delete(wishList);
     }

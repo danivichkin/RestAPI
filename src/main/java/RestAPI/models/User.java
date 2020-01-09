@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "users")
 @ToString(of = {"id", "firstname"})
 @EqualsAndHashCode(of = {"id"})
+@Data
 public class User {
 
     @Id
@@ -33,58 +34,11 @@ public class User {
     @OneToOne
     private WishList wishList;
 
-    public User() { }
+    public User() {
+    }
 
     public User(String firstName, WishList wishList) {
         this.firstName = firstName;
-        this.wishList = wishList;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public WishList getWishList() {
-        return wishList;
-    }
-
-    public void setWishList(WishList wishList) {
         this.wishList = wishList;
     }
 }

@@ -25,7 +25,7 @@ public class DirectionService {
         return directionLinkedList;
     }
 
-    public void delAllDirections() { directionsRepo.deleteAll();}
+    public void deleteAllDirections() { directionsRepo.deleteAll();}
 
     public void delDirectionById(long id) { directionsRepo.deleteById(id);}
 

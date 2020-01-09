@@ -16,22 +16,23 @@ public class DirectionController {
         this.directionService = directionService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<Direction> getAllDir() {
         return directionService.getAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("{id}")
     public Direction getById(@RequestParam Long id) { return directionService.getById(id); }
 
-    @RequestMapping(value = "/{id}" , method = RequestMethod.DELETE)
-    public void delDirectionById(@RequestBody int id) { directionService.delDirectionById(id); }
+    @DeleteMapping
+    public void deleteDirectionById(@RequestBody int id) { directionService.delDirectionById(id); }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
     public void editDirection(@RequestBody Direction direction){ directionService.saveDirection(direction); }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public Direction addDirection(@RequestParam String title, @RequestParam String description) {
+    @PostMapping
+    public Direction addDirection(@RequestParam String title,
+                                  @RequestParam String description) {
         Direction direction = new Direction(title, description);
         return directionService.saveDirection(direction);
     }
