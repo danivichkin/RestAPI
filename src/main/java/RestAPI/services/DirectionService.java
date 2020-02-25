@@ -19,9 +19,10 @@ public class DirectionService {
 
     public Direction saveDirection(Direction dir) { return directionsRepo.save(dir); }
 
-    public List<Direction> getAll() {
+    public List<Direction> getAll() {2,
         LinkedList<Direction> directionLinkedList = new LinkedList<>();
-        directionsRepo.findAll().forEach(directionLinkedList::add);
+        directionsRepo.
+    ().forEach(directionLinkedList::add);
         return directionLinkedList;
     }
 
